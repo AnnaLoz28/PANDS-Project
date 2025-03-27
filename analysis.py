@@ -108,7 +108,54 @@ plt.show()
 
 # 3. SCATTER PLOT OF EACH PAIR OF VARIABLES
 
+# Scatterplot of Sepal Length and Sepal Width
+ax, fig = plt.subplots()
+fig.scatter(sl, sw, color = "red")
+fig.set_xlabel("Sepal Length (cm)")
+fig.set_ylabel("Sepal Width (cm)")
+fig.set_title("Sepal Length vs Sepal Width")
+plt.show()
 
+# Scatterplot of Sepal Length and Petal Length
+ax, fig = plt.subplots()
+fig.scatter(sl, pl, color = "blue")
+fig.set_xlabel("Sepal Length (cm)")
+fig.set_ylabel("Petal Length (cm)")
+fig.set_title("Sepal Length vs Petal Length")
+plt.show()
+
+# Scatterplot of Sepal Length and Petal Width
+ax, fig = plt.subplots()
+fig.scatter(sl, pw, color = "green")
+fig.set_xlabel("Sepal Length (cm)")
+fig.set_ylabel("Petal Width (cm)")
+fig.set_title("Sepal Length vs Petal Width")
+plt.show()
+
+# Scatterplot of Petal Length and Sepal Width
+ax, fig = plt.subplots()
+fig.scatter(pl, sw, color = "orange")
+fig.set_xlabel("Petal Length (cm)")
+fig.set_ylabel("Sepal Width (cm)")
+fig.set_title("Petal Length vs Sepal Width")
+plt.show()
+
+# Scatterplot of Petal Width and Sepal Width
+ax, fig = plt.subplots()
+fig.scatter(pw, sw, color = "purple")
+fig.set_xlabel("Petal Width (cm)")
+fig.set_ylabel("Sepal Width (cm)")
+fig.set_title("Petal Width vs Sepal Width")
+plt.show()
+
+# Scatterplot of Petal Length and Petal Width
+ax, fig = plt.subplots()
+fig.scatter(pl, pw, color = "pink")
+fig.set_xlabel("Petal Length (cm)")
+fig.set_ylabel("Petal Width (cm)")
+fig.set_title("Petal Length vs Petal Width")
+plt.show()
 
 
 # 4. ANY OTHER APPROPRIATE ANALYSIS
+
