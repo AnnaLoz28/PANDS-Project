@@ -73,89 +73,55 @@ with open ("Iris Dataset Variables Analysis.txt", "w") as f:
 
 # 2. HISTOGRAM PLOT OF EACH VARIABLE TO PNG FILES
 
-# create a histogram plot of Sepal Length
-plt.hist(sl, color='blue', edgecolor='black');
-plt.title('Sepal Length')
-plt.xlabel('Sepal Length')
-plt.ylabel('Frequency')
-plt.savefig("Sepal Length Histogram.png")
-plt.show()
+def histogram_creator (x, title = "", xlab = "", ylab = "",  color = "blue", edgecolor = "black", grid = False, save = False, **kwargs):
+    plt.xlabel(f"{xlab}")
+    plt.ylabel(f"{ylab}")
+    title_font= {"family": "Georgia", "color" : "darkblue", "size" : 18}
+    plt.title (f"{title}", fontdict= title_font)
+    plt.hist(x, edgecolor = edgecolor, color = color, **kwargs)
+    if grid == True:
+        plt.grid(alpha = 0.2)
+    if save == True:
+        plt.savefig(f"{title}.png")
+    plt.show()
 
-# create a histogram plot of Sepal Width
-plt.hist(sw, color='green', edgecolor='black');
-plt.title('Sepal Width')
-plt.xlabel('Sepal Width')
-plt.ylabel('Frequency')
-plt.savefig("Sepal Width Histogram.png")
-plt.show()
-
-# create a histogram plot of Petal Length
-plt.hist(pl, color='red', edgecolor='black');
-plt.title('Petal Length')
-plt.xlabel('Petal Length')
-plt.ylabel('Frequency')
-plt.savefig("Petal Length Histogram.png")
-plt.show()
-
-# create a histogram plot of Petal Width
-plt.hist(pw, color='purple', edgecolor='black');
-plt.title('Petal Width')
-plt.xlabel('Petal Width')
-plt.ylabel('Frequency')
-plt.savefig("Petal Width Histogram.png")
-plt.show()
+histogram_creator(sl, title = "Sepal Length Histogram", xlab = "Sepal Length", ylab= "Frequency", grid = True, save = True)
+histogram_creator(sw, title = "Sepal Width Histogram", xlab = "Sepal Width", ylab = "Frequency", color = "green", grid = True, save = True)
+histogram_creator(pl, title = "Petal Length Histogram", xlab = "Petal Length", ylab = "Frequency", color = "red", grid = True, save = True)
+histogram_creator(pw, title = "Petal Width Histogram", xlab = "Petal Width", ylab = "Frequency", color = "orange", grid = True, save = True)
 
 
 # 3. SCATTER PLOT OF EACH PAIR OF VARIABLES
 
-# Scatterplot of Sepal Length and Sepal Width
-ax, fig = plt.subplots()
-fig.scatter(sl, sw, color = "red")
-fig.set_xlabel("Sepal Length (cm)")
-fig.set_ylabel("Sepal Width (cm)")
-fig.set_title("Sepal Length vs Sepal Width")
-plt.show()
+# scatterplots of each pair of variable highlighting the three species in different colors
+species = iris["target"] 
 
-# Scatterplot of Sepal Length and Petal Length
-ax, fig = plt.subplots()
-fig.scatter(sl, pl, color = "blue")
-fig.set_xlabel("Sepal Length (cm)")
-fig.set_ylabel("Petal Length (cm)")
-fig.set_title("Sepal Length vs Petal Length")
-plt.show()
+def scatterplot_creator (x, y, xlab = "", ylab = "", c = "red", title = "", grid = False, save = False, fitline = False, **kwargs):
+    plt.scatter(x, y , c = c, **kwargs)
+    plt.xlabel(f"{xlab}")
+    plt.ylabel(f"{ylab}")
+    title_font= {"family": "Georgia", "color" : "darkblue", "size" : 18}
+    plt.title(f"{title}", fontdict= title_font)
+    if grid == True:
+        plt.grid(alpha = 0.2)
+    if save == True:
+        plt.savefig(f"{title}.png")
+    if fitline == True:
+        m, c = np.polyfit(x, y, deg = 1)
+        plt.plot(x, m*x + c, color = "red")
+        plt.legend (["Data", "Line of Best Fit"])
+    plt.show()
 
-# Scatterplot of Sepal Length and Petal Width
-ax, fig = plt.subplots()
-fig.scatter(sl, pw, color = "green")
-fig.set_xlabel("Sepal Length (cm)")
-fig.set_ylabel("Petal Width (cm)")
-fig.set_title("Sepal Length vs Petal Width")
-plt.show()
-
-# Scatterplot of Petal Length and Sepal Width
-ax, fig = plt.subplots()
-fig.scatter(pl, sw, color = "orange")
-fig.set_xlabel("Petal Length (cm)")
-fig.set_ylabel("Sepal Width (cm)")
-fig.set_title("Petal Length vs Sepal Width")
-plt.show()
-
-# Scatterplot of Petal Width and Sepal Width
-ax, fig = plt.subplots()
-fig.scatter(pw, sw, color = "purple")
-fig.set_xlabel("Petal Width (cm)")
-fig.set_ylabel("Sepal Width (cm)")
-fig.set_title("Petal Width vs Sepal Width")
-plt.show()
-
-# Scatterplot of Petal Length and Petal Width
-ax, fig = plt.subplots()
-fig.scatter(pl, pw, color = "pink")
-fig.set_xlabel("Petal Length (cm)")
-fig.set_ylabel("Petal Width (cm)")
-fig.set_title("Petal Length vs Petal Width")
-plt.show()
+scatterplot_creator (sl, sw, xlab= "Sepal Length (cm)", ylab= "Sepal Width (cm)", title= "Sepal Length vs Sepal Width", c = species)
+scatterplot_creator(sl, pl, xlab= "Sepal Length (cm)", ylab= "Petal Length (cm)", title= "Sepal Length vs Petal Length", c= species)
+scatterplot_creator(sl, pw, xlab= "Sepal Length (cm)", ylab= "Petal Width (cm)", title= "Sepal Length vs Sepal Width", c= species)
+scatterplot_creator(pl, sw, xlab= "Petal Length (cm)", ylab= "Sepal Width (cm)", title= "Petal Length vs Sepal Width", c= species)
+scatterplot_creator(pw, sw, xlab= "Petal Width", ylab= "Sepal Width (cm)", title= "Petal Width vs Sepal Width", c= species)
+scatterplot_creator(pl, pw, xlab= "Petal Length (cm)", ylab= "Petal Width (cm)", title= "Petal Length vs Petal Width", c= species)
 
 
 # 4. ANY OTHER APPROPRIATE ANALYSIS
+
+
+
 
