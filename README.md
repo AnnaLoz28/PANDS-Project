@@ -1,5 +1,7 @@
 # Project for Programming and Scripting - Iris Data Set Analysis
 
+Author: Anna Lozenko
+
 The Iris dataset was created in 1936 by the British statistician and biologist Ronald Fisher. It consists of measurments of 150 Iris flowers from 3 species, with 50 samples per species:
 
 - *Iris setosa*
@@ -26,6 +28,7 @@ The Iris dataset is widely used today in statistics and machine learning. It is 
 </p>
 
 *Sources:*
+
 https://en.wikipedia.org/wiki/Iris_flower_data_set
 https://archive.ics.uci.edu/dataset/53/iris
 https://scikit-learn.org/1.4/auto_examples/datasets/plot_iris_dataset.html
