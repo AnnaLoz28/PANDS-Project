@@ -122,6 +122,51 @@ scatterplot_creator(pl, pw, xlab= "Petal Length (cm)", ylab= "Petal Width (cm)",
 
 # 4. ANY OTHER APPROPRIATE ANALYSIS
 
+# BOXPLOTS
+setosa = iris["data"][iris["target"] == 0]
+versicolor = iris["data"][iris["target"] == 1]
+virginica = iris["data"][iris["target"] == 2]
 
+def boxplots_creator (x, title = "", xlab = "", ylab= "", grid = False, save = False, **kwargs):
+    fig, ax = plt.subplots()
+    ax.boxplot(x, patch_artist= True)
+    title_font= {"family": "sans-serif", "color" : "black", "size" : 16, "weight" : "bold"}
+    ax.set_ylabel (f"{ylab}")
+    ax.set_xticklabels([f"{xlab}"])
+    ax.set_title (f"{title}", fontdict = title_font)
+    if grid == True:
+        ax.grid(axis = "y", alpha = 0.5, linestyle = "--")
+    if save == True: 
+        ax.savefig(f"{title}.png")
 
+setosa_pl = setosa["petal length (cm)"]
+versicolor_pl = versicolor["petal length (cm)"]
+virginica_pl = virginica ["petal length (cm)"]
+boxplots_creator(setosa_pl, title= "Iris Setosa Petal Length", xlab= "Iris setosa", ylab="Petal Length (cm)", grid = True)
+boxplots_creator(versicolor_pl, title= "Iris Versicolor Petal Length", xlab= "Iris versicolor", ylab="Petal Length (cm)", grid = True )
+boxplots_creator(virginica_pl, title= "Iris Virginica Petal Length", xlab= "Iris virginica", ylab="Petal Length (cm)", grid = True )
+boxplots_creator([setosa_pl, versicolor_pl, virginica_pl], ticklabs= ["setosa", "versicolor", "virginica"], xlab= "Species", ylab= "Petal Length (cm)", title = "Petal Lengths of All Species", grid = True)
 
+setosa_pw = setosa["petal width (cm)"]
+versicolor_pw = versicolor["petal width (cm)"]
+virginica_pw = virginica["petal width (cm)"]
+boxplots_creator(setosa_pw, title= "Iris Setosa Petal Width", xlab= "Iris setosa", ylab="Petal Width (cm)", grid = True )
+boxplots_creator(versicolor_pw, title= "Iris Versicolor Petal Width", xlab= "Iris versicolor", ylab="Petal Width (cm)", grid = True )
+boxplots_creator(virginica_pw, title= "Iris Virginica Petal Width", xlab= "Iris virginica", ylab="Petal Width (cm)", grid = True )
+boxplots_creator([setosa_pw, versicolor_pw, virginica_pw], ticklabs= ["setosa", "versicolor", "virginica"], xlab= "Species", ylab= "Petal Width (cm)", title = "Petal Width of All Species", grid = True)
+
+setosa_sl = setosa["sepal length (cm)"]
+versicolor_sl = versicolor["sepal length (cm)"]
+virginica_sl = virginica["sepal length (cm)"]
+boxplots_creator(setosa_sl, title= "Iris Setosa Sepal Length", xlab= "Iris setosa", ylab="Sepal Length (cm)", grid = True )
+boxplots_creator(versicolor_sl, title= "Iris Versicolor Sepal Length", xlab= "Iris versicolr", ylab="Sepal Length (cm)", grid = True )
+boxplots_creator(virginica_sl, title= "Iris Virginica Sepal Length", xlab= "Iris virginica", ylab="Sepal Length (cm)", grid = True )
+boxplots_creator([setosa_sl, versicolor_sl, virginica_sl], ticklabs= ["setosa", "versicolor", "virginica"], xlab= "Species", ylab= "Sepal Length (cm)", title = "Sepal Lengths of All Species", grid = True)
+
+setosa_sw = setosa["sepal width (cm)"]
+versicolor_sw = versicolor["sepal width (cm)"]
+virginica_sw = virginica["sepal width (cm)"]
+boxplots_creator(setosa_sw, title= "Iris Setosa Sepal Width", xlab= "Iris setosa", ylab="Sepal Width (cm)", grid = True )
+boxplots_creator(versicolor_sw, title= "Iris Versicolor Sepal Width", xlab= "Iris versicolor", ylab="Sepal Width (cm)", grid = True )
+boxplots_creator(virginica_sw, title= "Iris Virginica Sepal Width", xlab= "Iris virginica", ylab="Sepal Width (cm)", grid = True )
+boxplots_creator([setosa_sw, versicolor_sw, virginica_sw], ticklabs= ["setosa", "versicolor", "virginica"], xlab= "Species", ylab= "Sepal Width (cm)", title = "Sepal Width of All Species", grid = True)
