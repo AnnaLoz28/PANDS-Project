@@ -8,6 +8,7 @@ import matplotlib.pyplot as plt # https://matplotlib.org/3.5.3/api/_as_gen/matpl
 import sklearn as skl # https://scikit-learn.org/stable/
 from sklearn import datasets 
 import pandas as pd # https://pandas.pydata.org/
+import seaborn as sns # https://seaborn.pydata.org/index.html
 
 # load the Iris dataset from sklearn datasets library
 iris = skl.datasets.load_iris(as_frame= True) # load the "data" from the dataset as a Pandas DataFrame (https://scikit-learn.org/1.4/modules/generated/sklearn.datasets.load_iris.html#sklearn.datasets.load_iris)
@@ -167,3 +168,18 @@ boxplots_creator(setosa_sw, title= "Iris Setosa Sepal Width", xlab= "Iris setosa
 boxplots_creator(versicolor_sw, title= "Iris Versicolor Sepal Width", xlab= "Iris versicolor", ylab="Sepal Width (cm)", grid = True ) # versicolor sepal width
 boxplots_creator(virginica_sw, title= "Iris Virginica Sepal Width", xlab= "Iris virginica", ylab="Sepal Width (cm)", grid = True ) # virginica sepal width
 boxplots_creator([setosa_sw, versicolor_sw, virginica_sw], ticklabs= ["setosa", "versicolor", "virginica"], xlab= "Species", ylab= "Sepal Width (cm)", title = "Sepal Width of All Species", grid = True) # all species in one plot
+
+
+# FEATURES CORRELATION MATRIX (https://www.displayr.com/what-is-a-correlation-matrix/#:~:text=A%20correlation%20matrix%20is%20a,a%20diagnostic%20for%20advanced%20analyses.)
+
+# create a Pandas DataFrame with Iris "data"
+df = iris["data"]
+
+# calculate the correlation coefficients between features and save them in a correlation matrix (https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.corr.html)
+corr_matrix = df.corr()
+
+# create the heatmap with the correlation coefficients (https://seaborn.pydata.org/generated/seaborn.heatmap.html#seaborn.heatmap)
+sns.heatmap(corr_matrix, annot=True, cmap= "coolwarm", vmin= -1, vmax= 1, linewidths= 0.5) # annotate the heatmap with the correlation values, the "coolwarm" color palette has been used (https://seaborn.pydata.org/tutorial/color_palettes.html)
+title_font= {"family": "sans-serif", "color" : "black", "size" : 16, "weight" : "bold"} # create a custom font for the title
+plt.title("Correlation Matrix of Iris Dataset Features", fontdict= title_font)
+plt.show()
